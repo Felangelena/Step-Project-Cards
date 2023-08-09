@@ -16,7 +16,7 @@ npm i, gulp build, gulp dev
 
 ## Римар Іван
 
-- верстка, оформлення
+-------------------------
 
 - форми створення візиту (кардіолог, стоматолог, терапевт - класи), логіка з select
 - валідація форми (додаткова опція)
@@ -26,5 +26,9 @@ npm i, gulp build, gulp dev
 
 - видалення картки візиту (запит на сервер)
 - функціоналність кнопки Показати більше/Приховати (dispaly none)
+
+-------------------------
+
+- верстка, оформлення
 
 - фільтри (input - за ім'ям та прізвищем, status - додати поле статус в картку, priotity - поле в картці, eventListener на зміну select - https://www.w3schools.com/jsref/event_onchange.asp, https://stackoverflow.com/questions/24875414/addeventlistener-change-and-option-selection)
