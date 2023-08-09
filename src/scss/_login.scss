@@ -97,14 +97,19 @@ body {
    background-color: aquamarine;
 }
 
-#exitButton, .form-autoris form, #createButton, main{
+#exitButton, .form-autoris form, #createButton{
    display: none;
 }
 
-main{
+.hello-window {
    display: flex;
    justify-content: center;
    align-items: center;
    border: 1px solid black;
    border-top: none;
+}
+
+.visit {
+   display: block;
+   margin: 0 auto;
 }

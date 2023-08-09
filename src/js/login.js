@@ -1,4 +1,3 @@
-
 const enterButton = document.getElementById('enterButton');
 const formElement = document.querySelector('.form-autoris form');
 
