@@ -1,8 +1,5 @@
 const btnAddVisit = document.querySelector('#addVisit');
-
 btnAddVisit.addEventListener('click', addVisit);
-
-const token = 'c5dbf986-2bf0-4d36-80bd-13cbea71b9e8';
 
 function addVisit() {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
