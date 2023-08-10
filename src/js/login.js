@@ -74,4 +74,3 @@ overlayElement.addEventListener('click', function(event) {
     }
 });
 
->>>>>>> 6b0c33b0aa45a02656ddd7738c6ac9cde29d8a36:src/js/exit.js
