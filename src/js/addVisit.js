@@ -10,11 +10,11 @@ function addVisit() {
     },
     body: JSON.stringify({
         title: 'Визит к кардиологу',
-        description: 'Плановый визит',
+        description: 'Не срочный визит',
         doctor: 'Cardiologist',
-        bp: '24',
-        age: 23,
-        weight: 70
+        bp: '26',
+        age: 41,
+        weight: 84
     })
     })
     .then(response => response.json())
