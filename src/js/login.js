@@ -76,3 +76,103 @@ overlayElement.addEventListener('click', function(event) {
     }
 });
 
+
+
+// второй єтап
+
+
+
+
+const overlay = document.getElementById('overlay');
+
+createButton.addEventListener('click', function() {
+    formElement.classList.add('Modal'); 
+    overlay.style.display = 'block';
+    formElement.style.display = 'flex'; 
+});
+
+
+createButton.addEventListener('click', function() {
+    console.log('Button clicked!'); // ghjdthrf rkbrf gj ryjgrt
+    formElement.style.display = 'block';
+});
+
+
+
+
+
+
+
+const doctorSelect = document.querySelector('.doctor-select');
+
+const metaInput = document.createElement('input');
+metaInput.type = 'text';
+metaInput.classList.add('form-control');
+metaInput.placeholder = 'Мета візиту';
+
+const descriptionInput = document.createElement('input');
+descriptionInput.type = 'text';
+descriptionInput.classList.add('form-control');
+descriptionInput.placeholder = 'Короткий опис візиту';
+
+const urgencySelect = document.createElement('select');
+urgencySelect.classList.add('form-control');
+urgencySelect.innerHTML = `
+    <option value="normal">Звичайна</option>
+    <option value="priority">Пріоритетна</option>
+    <option value="urgent">Невідкладна</option>
+`;
+
+const fullNameInput = document.createElement('input');
+fullNameInput.type = 'text';
+fullNameInput.classList.add('form-control');
+fullNameInput.placeholder = 'ПІБ';
+
+
+
+createButton.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    openModal();
+});
+
+function openModal() {
+    formElement.classList.add('Modal');
+    overlay.style.display = 'block';
+    formElement.style.display = 'flex';
+
+    const formGroups = formElement.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.style.display = 'none';
+    });
+
+    doctorSelect.style.display = 'block';
+
+    formElement.appendChild(metaInput);
+    formElement.appendChild(descriptionInput);
+    formElement.appendChild(urgencySelect);
+    formElement.appendChild(fullNameInput);
+}
+
+function closeModal() {
+    formElement.classList.remove('Modal');
+    overlay.style.display = 'none';
+    formElement.style.display = 'none';
+
+    const formGroups = formElement.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.style.display = 'block';
+    });
+
+    doctorSelect.style.display = 'none';
+
+    formElement.removeChild(metaInput);
+    formElement.removeChild(descriptionInput);
+    formElement.removeChild(urgencySelect);
+    formElement.removeChild(fullNameInput);
+}
+
+
+
+exitButton.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
