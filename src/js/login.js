@@ -39,8 +39,6 @@ formElement.addEventListener('submit', function(event) {
         createButton.style.display = 'block';
         exitButton.style.display = 'block';
         mainField.style.display = 'flex';
-
-        getVisits();
     } else {
         alert('Ошибка: неправильний логін або пароль');
     }

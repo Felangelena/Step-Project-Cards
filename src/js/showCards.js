@@ -18,7 +18,7 @@ class VisitCardDentist {
         <h5 class="card-title">Карта візиту</h5>
         <div class="card-header-btns">
             <button type="button" class="btn btn-primary btn--edit">Редагувати</button>
-            <button type="button" class="btn btn-primary btn--delete">Видалити</button>
+            <button type="button" class="btn btn-primary btn--delete" title="Видалити">X</button>
         </div>
         </div>
         <div class="card-body">
@@ -66,7 +66,7 @@ class VisitCardCardiologist {
         <h5 class="card-title">Карта візиту</h5>
         <div class="card-header-btns">
             <button type="button" class="btn btn-primary btn--edit">Редагувати</button>
-            <button type="button" class="btn btn-primary btn--delete">Видалити</button>
+            <button type="button" class="btn btn-primary btn--delete" title="Видалити">X</button>
         </div>
         </div>
         <div class="card-body">
@@ -117,7 +117,7 @@ class VisitCardTherapist {
         <h5 class="card-title">Карта візиту</h5>
         <div class="card-header-btns">
             <button type="button" class="btn btn-primary btn--edit">Редагувати</button>
-            <button type="button" class="btn btn-primary btn--delete">Видалити</button>
+            <button type="button" class="btn btn-primary btn--delete" title="Видалити">X</button>
         </div>
         </div>
         <div class="card-body">
@@ -155,35 +155,39 @@ function getVisits() {
     })
         .then(response => response.json())
         .then(response => {
-        console.log(response);
-        response.forEach(visit => {
-            if(visit.doctor == 'Cardiologist'){
-            const visitCard1 = new VisitCardCardiologist(visit);
-            visitCard1.render();
-            } else if (visit.doctor == 'Dentist') {
-            const visitCard2 = new VisitCardDentist(visit);
-            visitCard2.render();
-            } else if (visit.doctor == 'Therapist') {
-            const visitCard3 = new VisitCardTherapist(visit);
-            visitCard3.render();
+            console.log(response);
+            if (response.length == 0) {
+                visits.innerHTML = '<h2>No items have been added</h2>';
+            } else {
+                response.forEach(visit => {
+                    if(visit.doctor == 'Cardiologist'){
+                    const visitCard1 = new VisitCardCardiologist(visit);
+                    visitCard1.render();
+                    } else if (visit.doctor == 'Dentist') {
+                    const visitCard2 = new VisitCardDentist(visit);
+                    visitCard2.render();
+                    } else if (visit.doctor == 'Therapist') {
+                    const visitCard3 = new VisitCardTherapist(visit);
+                    visitCard3.render();
+                    }
+                })
             }
-        })
         })
 }
 
 visits.addEventListener('click', (e) => {
-const element = e.target;
-if(element.classList.contains('seeMore')){
-    element.nextElementSibling.classList.toggle('hide');
-    if (element.textContent == "Показати більше"){
-        element.textContent = "Приховати"
-    } else {
-        element.textContent = "Показати більше"
+    const element = e.target;
+    if(element.classList.contains('seeMore')){
+        element.nextElementSibling.classList.toggle('hide');
+        if (element.textContent == "Показати більше"){
+            element.textContent = "Приховати"
+        } else {
+            element.textContent = "Показати більше"
+        }
+    } else if (element.classList.contains('btn--delete')){
+        const cardId = element.closest("div.card").getAttribute('data-id');
+        console.log(cardId);
+        deleteCard(cardId);
+        element.closest("div.card").remove();
     }
-} else if (element.classList.contains('btn--delete')){
-    const cardId = element.closest("div.card").getAttribute('data-id');
-    console.log(cardId);
-    deleteCard(cardId);
-    element.closest("div.card").remove();
-}
 });
