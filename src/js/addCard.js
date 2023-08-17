@@ -1,49 +1,85 @@
 // Add card
 
-/* fetch("https://ajax.test-danit.com/api/v2/cards", {
+function createVisitCardiologist (doctor, pressure, bmi, diseases, age, goal, description, priority, visitor, dateTime, status) {
+  fetch("https://ajax.test-danit.com/api/v2/cards", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
   },
   body: JSON.stringify({
-  visitor: "Anna",
-  priority: "Low",
-  goal: "Medical check",
-  description: "Check weight",
-  doctor: "Therapist",
-  age: 27
+    doctor: doctor,
+    pressure: pressure,
+    bmi: bmi,
+    diseases: diseases,
+    age: age,
+    goal: goal,
+    description: description,
+    priority: priority,
+    visitor: visitor,
+    dateTime: dateTime,
+    status: status
   })
 })
   .then(response => response.json())
-  .then(response => console.log(response)) */
+  .then(response => {
+    console.log(response);
+    const visitCard1 = new VisitCardCardiologist(response);
+    visitCard1.render();
+  }
+  );
+}
 
-const visitDentist = {
-    visitor: "Olena",
-    priority: "High",
-    goal: "Delete teeth",
-    description: "Delete down wise teeth",
-    doctor: "Dentist",
-    lastVisit: "2017-01-26"
-};
+function createVisitDentist (doctor, lastVisit, goal, description, priority, visitor, dateTime, status) {
+  fetch("https://ajax.test-danit.com/api/v2/cards", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    doctor: doctor,
+    lastVisit: lastVisit,
+    goal: goal,
+    description: description,
+    priority: priority,
+    visitor: visitor,
+    dateTime: dateTime,
+    status: status
+  })
+})
+  .then(response => response.json())
+  .then(response => {
+    console.log(response);
+    const visitCard1 = new VisitCardDentist(response);
+    visitCard1.render();
+  }
+  );
+}
 
-const visitCardiologist = {
-    visitor: "Ivan",
-    priority: "Low",
-    goal: "Check heart rythm",
-    description: "Fast hearth rythm",
-    doctor: "Cardiologist",
-    pressure: "120/90",
-    bp: 32,
-    desease: "type I",
-    age: 32
-};
-
-const visitTherapist = {
-    visitor: "Julia",
-    priority: "Normal",
-    goal: "Medical check",
-    description: "Check pressure, hearth beat",
-    doctor: "Therapist",
-    age: 26
-};
+function createVisitTherapist (doctor, age, goal, description, priority, visitor, dateTime, status) {
+  fetch("https://ajax.test-danit.com/api/v2/cards", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    doctor: doctor,
+    age: age,
+    goal: goal,
+    description: description,
+    priority: priority,
+    visitor: visitor,
+    dateTime: dateTime,
+    status: status
+  })
+})
+  .then(response => response.json())
+  .then(response => {
+    console.log(response);
+    const visitCard1 = new VisitCardTherapist(response);
+    visitCard1.render();
+  }
+  );
+}

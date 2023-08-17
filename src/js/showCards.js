@@ -1,9 +1,11 @@
 class VisitCardDentist {
-    constructor({id, visitor, doctor, priority, goal, description, lastVisit}) {
+    constructor({id, visitor, doctor, priority, dateTime, goal, description, lastVisit, status}) {
         this.id = id,
         this.visitor = visitor,
         this.doctor = doctor,
         this.priority = priority,
+        this.dateTime = dateTime,
+        this.status = status,
         this.goal = goal,
         this.description = description,
         this.lastVisit = lastVisit
@@ -13,6 +15,21 @@ class VisitCardDentist {
         const card = document.createElement('div');
         card.classList.add('card');
         card.dataset.id = this.id;
+
+        const date = new Date(this.dateTime);
+        const dateStr =
+            ("00" + date.getDate()).slice(-2) + "." +
+            ("00" + (date.getMonth() + 1)).slice(-2) + "." +
+            date.getFullYear() + " " +
+            ("00" + date.getHours()).slice(-2) + ":" +
+            ("00" + date.getMinutes()).slice(-2);
+
+        const lastVisit = new Date(this.lastVisit);
+        const lastVisitStr =
+            ("00" + lastVisit.getDate()).slice(-2) + "." +
+            ("00" + (lastVisit.getMonth() + 1)).slice(-2) + "." +
+            lastVisit.getFullYear();
+
         card.innerHTML = `
         <div class="card-header">
         <h5 class="card-title">Карта візиту</h5>
@@ -28,32 +45,38 @@ class VisitCardDentist {
             <p class="desc">${this.doctor}</p>
             <button type="button" class="btn btn-primary seeMore">Показати більше</button>
             <div class="card-body-hide hide">
-                <h6 class="title">Терміновість:</h6>
-                <p class="desc">${this.priority}</p>
-                <h6 class="title">Мета візиту:</h6>
-                <p class="desc">${this.goal}</p>
-                <h6 class="title">Опис візиту:</h6>
-                <p class="desc">${this.description}</p>
-                <h6 class="title">Дата останнього візиту:</h6>
-                <p class="desc">${this.lastVisit}</p>
+            <h6 class="title">Терміновість:</h6>
+            <p class="desc">${this.priority}</p>
+            <h6 class="title">Дата і час:</h6>
+            <p class="desc">${dateStr}</p>
+            <h6 class="title">Статус візиту:</h6>
+            <p class="desc">${this.status}</p>
+            <h6 class="title">Мета візиту:</h6>
+            <p class="desc">${this.goal}</p>
+            <h6 class="title">Опис візиту:</h6>
+            <p class="desc">${this.description}</p>
+            <h6 class="title">Дата останнього візиту:</h6>
+            <p class="desc">${lastVisitStr}</p>
             </div>
         </div>
         `;
-        document.querySelector('.visits').append(card);
+        document.querySelector('.visits').prepend(card);
     }
 }
 
 class VisitCardCardiologist {
-    constructor({id, visitor, doctor, priority, goal, description, pressure, bp, desease, age}) {
+    constructor({id, visitor, doctor, priority, dateTime, goal, description, pressure, bmi, diseases, age, status}) {
         this.id = id,
         this.visitor = visitor,
         this.doctor = doctor,
         this.priority = priority,
+        this.dateTime = dateTime,
+        this.status = status,
         this.goal = goal,
         this.description = description,
         this.pressure = pressure,
-        this.bp = bp,
-        this.desease = desease,
+        this.bmi = bmi,
+        this.diseases = diseases,
         this.age = age
     }
 
@@ -61,6 +84,13 @@ class VisitCardCardiologist {
         const card = document.createElement('div');
         card.classList.add('card');
         card.dataset.id = this.id;
+        const date = new Date(this.dateTime);
+        const dateStr =
+            ("00" + date.getDate()).slice(-2) + "." +
+            ("00" + (date.getMonth() + 1)).slice(-2) + "." +
+            date.getFullYear() + " " +
+            ("00" + date.getHours()).slice(-2) + ":" +
+            ("00" + date.getMinutes()).slice(-2);
         card.innerHTML = `
         <div class="card-header">
         <h5 class="card-title">Карта візиту</h5>
@@ -78,6 +108,10 @@ class VisitCardCardiologist {
             <div class="card-body-hide hide">
                 <h6 class="title">Терміновість:</h6>
                 <p class="desc">${this.priority}</p>
+                <h6 class="title">Дата і час:</h6>
+                <p class="desc">${dateStr}</p>
+                <h6 class="title">Статус візиту:</h6>
+                <p class="desc">${this.status}</p>
                 <h6 class="title">Мета візиту:</h6>
                 <p class="desc">${this.goal}</p>
                 <h6 class="title">Опис візиту:</h6>
@@ -85,24 +119,26 @@ class VisitCardCardiologist {
                 <h6 class="title">Звичайний тиск:</h6>
                 <p class="desc">${this.pressure}</p>
                 <h6 class="title">Індекс маси тіла:</h6>
-                <p class="desc">${this.bp}</p>
+                <p class="desc">${this.bmi}</p>
                 <h6 class="title">Перенесені захворювання серцево-судинної системи:</h6>
-                <p class="desc">${this.desease}</p>
+                <p class="desc">${this.diseases}</p>
                 <h6 class="title">Вік:</h6>
                 <p class="desc">${this.age}</p>
             </div>
         </div>
         `;
-        document.querySelector('.visits').append(card);
+        document.querySelector('.visits').prepend(card);
     }
 }
 
 class VisitCardTherapist {
-    constructor({id, visitor, doctor, priority, goal, description, age}) {
+    constructor({id, visitor, doctor, priority, dateTime, goal, description, age, status}) {
         this.id = id,
         this.visitor = visitor,
         this.doctor = doctor,
         this.priority = priority,
+        this.dateTime = dateTime,
+        this.status = status,
         this.goal = goal,
         this.description = description,
         this.age = age
@@ -112,6 +148,13 @@ class VisitCardTherapist {
         const card = document.createElement('div');
         card.classList.add('card');
         card.dataset.id = this.id;
+        const date = new Date(this.dateTime);
+        const dateStr =
+            ("00" + date.getDate()).slice(-2) + "." +
+            ("00" + (date.getMonth() + 1)).slice(-2) + "." +
+            date.getFullYear() + " " +
+            ("00" + date.getHours()).slice(-2) + ":" +
+            ("00" + date.getMinutes()).slice(-2);
         card.innerHTML = `
         <div class="card-header">
         <h5 class="card-title">Карта візиту</h5>
@@ -127,18 +170,22 @@ class VisitCardTherapist {
             <p class="desc">${this.doctor}</p>
             <button type="button" class="btn btn-primary seeMore">Показати більше</button>
             <div class="card-body-hide hide">
-                <h6 class="title">Терміновість:</h6>
-                <p class="desc">${this.priority}</p>
-                <h6 class="title">Мета візиту:</h6>
-                <p class="desc">${this.goal}</p>
-                <h6 class="title">Опис візиту:</h6>
-                <p class="desc">${this.description}</p>
-                <h6 class="title">Вік:</h6>
-                <p class="desc">${this.age}</p>
+            <h6 class="title">Терміновість:</h6>
+            <p class="desc">${this.priority}</p>
+            <h6 class="title">Дата і час:</h6>
+            <p class="desc">${dateStr}</p>
+            <h6 class="title">Статус візиту:</h6>
+            <p class="desc">${this.status}</p>
+            <h6 class="title">Мета візиту:</h6>
+            <p class="desc">${this.goal}</p>
+            <h6 class="title">Опис візиту:</h6>
+            <p class="desc">${this.description}</p>
+            <h6 class="title">Вік:</h6>
+            <p class="desc">${this.age}</p>
             </div>
         </div>
         `;
-        document.querySelector('.visits').append(card);
+        document.querySelector('.visits').prepend(card);
     }
 }
 

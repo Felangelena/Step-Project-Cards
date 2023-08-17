@@ -74,66 +74,59 @@ overlayElement.addEventListener('click', function(event) {
     }
 });
 
-
-
-
-
-
-
-
-// второй єтап
-
-
-
+// второй этап
 
 const overlay = document.getElementById('overlay');
 
 createButton.addEventListener('click', function() {
-    formElement.classList.add('Modal'); 
+    formElement.classList.add('Modal');
     overlay.style.display = 'block';
-    formElement.style.display = 'flex'; 
+    formElement.style.display = 'flex';
 });
-
 
 createButton.addEventListener('click', function() {
-    console.log('Button clicked!'); // ghjdthrf rkbrf gj ryjgrt
     formElement.style.display = 'block';
 });
-
-
-
-
-
-
 
 const doctorSelect = document.querySelector('.doctor-select');
 
 const metaInput = document.createElement('input');
 metaInput.type = 'text';
 metaInput.classList.add('form-control');
+metaInput.setAttribute('id','goal');
 metaInput.placeholder = 'Мета візиту';
 metaInput.required = true; // Добавляем required к полю
 
 const descriptionInput = document.createElement('input');
 descriptionInput.type = 'text';
 descriptionInput.classList.add('form-control');
+descriptionInput.setAttribute('id','description');
 descriptionInput.placeholder = 'Короткий опис візиту';
 descriptionInput.required = true; // Добавляем required к полю
 
 const urgencySelect = document.createElement('select');
 urgencySelect.classList.add('form-control');
+urgencySelect.setAttribute('id','priority');
 urgencySelect.innerHTML = `
-    <option value="normal">Звичайна</option>
-    <option value="priority">Пріоритетна</option>
-    <option value="urgent">Невідкладна</option>
+    <option value="low">Звичайна</option>
+    <option value="normal">Пріоритетна</option>
+    <option value="high">Невідкладна</option>
+`;
+
+const statusSelect = document.createElement('select');
+statusSelect.classList.add('form-control');
+statusSelect.setAttribute('id','status');
+statusSelect.innerHTML = `
+    <option value="planned">Запланований</option>
+    <option value="visited">Відбувся</option>
 `;
 
 const fullNameInput = document.createElement('input');
 fullNameInput.type = 'text';
 fullNameInput.classList.add('form-control');
+fullNameInput.setAttribute('id','visitor');
 fullNameInput.placeholder = 'ПІБ';
 fullNameInput.required = true;
-
 
 const dateInputLabel = document.createElement('label');
 dateInputLabel.textContent = 'Дата і час візиту'; // Текст надписи
@@ -143,11 +136,8 @@ dateInputLabel.classList.add('input-label'); // Добавляем класс д
 const dateInput = document.createElement('input');
 dateInput.type = 'datetime-local';
 dateInput.classList.add('form-control');
+dateInput.setAttribute('id','dateTime');
 dateInput.required = true;
-
-
-
-
 
 // Кнопка "Створити"
 const createCardButton = document.createElement('button');
@@ -163,13 +153,11 @@ closeButton.classList.add('btn', 'btn-sm');
 closeButton.id = 'ExitAddCardButton';
 closeButton.textContent = 'Закрити';
 
-
 createButton.addEventListener('click', function(event) {
     event.preventDefault();
 
     openModal();
 });
-
 
 function openModal() {
     formElement.classList.add('Modal');
@@ -183,23 +171,16 @@ function openModal() {
 
     doctorSelect.style.display = 'block';
     extraFieldsContainer.style.display = 'block';
-    
-    
-    
 
-    
     formElement.appendChild(metaInput);
     formElement.appendChild(descriptionInput);
     formElement.appendChild(urgencySelect);
     formElement.appendChild(fullNameInput);
     formElement.appendChild(dateInputLabel);
     formElement.appendChild(dateInput);
+    formElement.appendChild(statusSelect);
     formElement.appendChild(createCardButton);
     formElement.appendChild(closeButton);}
-    
-
-
-
 
 function closeModal() {
     formElement.reset()
@@ -208,12 +189,12 @@ function closeModal() {
     formElement.style.display = 'none';
 
     // Сбрасываем значения всех полей в начальное состояние
-    dateInput.value = ''; 
-    metaInput.value = ''; 
-    descriptionInput.value = ''; 
-    urgencySelect.value = 'normal'; 
-    fullNameInput.value = ''; 
-    
+    dateInput.value = '';
+    metaInput.value = '';
+    descriptionInput.value = '';
+    urgencySelect.value = 'normal';
+    fullNameInput.value = '';
+
     // Убираем дополнительные поля в зависимости от выбранного доктора
     extraFieldsContainer.innerHTML = '';
 
@@ -224,7 +205,6 @@ function closeModal() {
 
     doctorSelect.style.display = 'none';
     extraFieldsContainer.style.display = 'none';
-    
 
     formElement.removeChild(dateInput);
     formElement.removeChild(metaInput);
@@ -234,12 +214,7 @@ function closeModal() {
     formElement.removeChild(createCardButton);
     formElement.removeChild(closeButton);
     formElement.removeChild(dateInputLabel);
-
-
-
-    
 }
-
 
 // Обработчик для кнопки "Закрити"
 closeButton.addEventListener('click', closeModal);
@@ -247,10 +222,7 @@ closeButton.addEventListener('click', closeModal);
 exitButton.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
-
-
 const extraFieldsContainer = document.querySelector('.extra-fields-container');
-
 
 function applyDoctorClass(selectedDoctor) {
     formElement.classList.remove('VisitDentist', 'VisitCardiologist', 'VisitTherapist');
@@ -281,7 +253,6 @@ doctorSelect.addEventListener('change', function () {
 });
 
 // function addDentistFields() {
-
 //     const lastVisitInput = document.createElement('input');
 //     lastVisitInput.type = 'date';
 //     lastVisitInput.classList.add('form-control');
@@ -289,6 +260,7 @@ doctorSelect.addEventListener('change', function () {
 //     lastVisitInput.required = true; // Добавляем required к полю - обязательное заполнение!
 //     extraFieldsContainer.appendChild(lastVisitInput);
 // }
+
 function addDentistFields() {
     const lastVisitLabel = document.createElement('label');
     lastVisitLabel.textContent = 'Дата останнього візиту';
@@ -297,19 +269,18 @@ function addDentistFields() {
     const lastVisitInput = document.createElement('input');
     lastVisitInput.type = 'date';
     lastVisitInput.classList.add('form-control');
+    lastVisitInput.setAttribute('id','lastVisit');
     lastVisitInput.required = true;
 
     extraFieldsContainer.appendChild(lastVisitLabel);
     extraFieldsContainer.appendChild(lastVisitInput);
 }
 
-
-
-
 function addCardiologistFields() {
     const bloodPressureInput = document.createElement('input');
     bloodPressureInput.type = 'text';
     bloodPressureInput.classList.add('form-control');
+    bloodPressureInput.setAttribute('id','bloodPressure');
     bloodPressureInput.placeholder = 'Звичайний тиск';
     bloodPressureInput.required = true; // Добавляем required к полю
     extraFieldsContainer.appendChild(bloodPressureInput);
@@ -317,6 +288,7 @@ function addCardiologistFields() {
     const bmiInput = document.createElement('input');
     bmiInput.type = 'text';
     bmiInput.classList.add('form-control');
+    bmiInput.setAttribute('id','bmi');
     bmiInput.placeholder = 'Індекс маси тіла';
     bmiInput.required = true; // Добавляем required к полю
     extraFieldsContainer.appendChild(bmiInput);
@@ -324,13 +296,15 @@ function addCardiologistFields() {
     const cardiacDiseasesInput = document.createElement('input');
     cardiacDiseasesInput.type = 'text';
     cardiacDiseasesInput.classList.add('form-control');
+    cardiacDiseasesInput.setAttribute('id','diseases');
     cardiacDiseasesInput.placeholder = 'Перенесені захворювання ССС';
-    cardiacDiseasesInput.required = true; 
+    cardiacDiseasesInput.required = true;
     extraFieldsContainer.appendChild(cardiacDiseasesInput);
 
     const ageInput = document.createElement('input');
     ageInput.type = 'text';
     ageInput.classList.add('form-control');
+    ageInput.setAttribute('id','age');
     ageInput.placeholder = 'Вік';
     ageInput.required = true;
     ageInput.addEventListener('input', function() {
@@ -349,6 +323,7 @@ function addTherapistFields() {
     const ageInput = document.createElement('input');
     ageInput.type = 'text';
     ageInput.classList.add('form-control');
+    ageInput.setAttribute('id','years');
     ageInput.placeholder = 'Вік';
     ageInput.required = true;
     ageInput.addEventListener('input', function() {
@@ -367,8 +342,18 @@ createCardButton.addEventListener('click', function(event) {
     if (formElement.classList.contains('Modal') && doctorSelect.value === '') {
         event.preventDefault();
         alert('Выберите врача');
+    } else {
+        // Остальной код для создания визита
+        switch (doctorSelect.value) {
+            case 'Dentist':
+                createVisitDentist(doctorSelect.value, document.querySelector("#lastVisit").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
+                break;
+            case 'Cardiologist':
+                createVisitCardiologist(doctorSelect.value, document.querySelector("#bloodPressure").value, document.querySelector("#bmi").value, document.querySelector("#diseases").value, document.querySelector("#age").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
+                break;
+            case 'Therapist':
+                createVisitTherapist(doctorSelect.value, document.querySelector("#years").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
+                break;
+        }
     }
-    // Остальной код для создания визита
 });
-
-
