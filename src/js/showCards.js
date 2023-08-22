@@ -40,23 +40,23 @@ class VisitCardDentist {
         </div>
         <div class="card-body">
             <h6 class="title">ПІБ:</h6>
-            <p class="desc">${this.visitor}</p>
+            <p class="desc" data-visitor="${this.visitor}">${this.visitor}</p>
             <h6 class="title">Лікар:</h6>
-            <p class="desc">${this.doctor}</p>
+            <p class="desc" data-doctor="${this.doctor}">${this.doctor}</p>
             <button type="button" class="btn btn-primary seeMore">Показати більше</button>
             <div class="card-body-hide hide">
-            <h6 class="title">Терміновість:</h6>
-            <p class="desc">${this.priority}</p>
-            <h6 class="title">Дата і час:</h6>
-            <p class="desc">${dateStr}</p>
-            <h6 class="title">Статус візиту:</h6>
-            <p class="desc">${this.status}</p>
-            <h6 class="title">Мета візиту:</h6>
-            <p class="desc">${this.goal}</p>
-            <h6 class="title">Опис візиту:</h6>
-            <p class="desc">${this.description}</p>
-            <h6 class="title">Дата останнього візиту:</h6>
-            <p class="desc">${lastVisitStr}</p>
+                <h6 class="title">Терміновість:</h6>
+                <p class="desc" data-priority="${this.priority}">${this.priority}</p>
+                <h6 class="title">Дата і час:</h6>
+                <p class="desc" data-date="${this.dateTime}">${dateStr}</p>
+                <h6 class="title">Статус візиту:</h6>
+                <p class="desc" data-status="${this.status}">${this.status}</p>
+                <h6 class="title">Мета візиту:</h6>
+                <p class="desc" data-goal="${this.goal}">${this.goal}</p>
+                <h6 class="title">Опис візиту:</h6>
+                <p class="desc" data-description="${this.description}">${this.description}</p>
+                <h6 class="title">Дата останнього візиту:</h6>
+                <p class="desc" data-last="${this.lastVisit}">${lastVisitStr}</p>
             </div>
         </div>
         `;
@@ -101,29 +101,29 @@ class VisitCardCardiologist {
         </div>
         <div class="card-body">
             <h6 class="title">ПІБ:</h6>
-            <p class="desc">${this.visitor}</p>
+            <p class="desc" data-visitor="${this.visitor}">${this.visitor}</p>
             <h6 class="title">Лікар:</h6>
-            <p class="desc">${this.doctor}</p>
+            <p class="desc" data-doctor="${this.doctor}">${this.doctor}</p>
             <button type="button" class="btn btn-primary seeMore">Показати більше</button>
             <div class="card-body-hide hide">
                 <h6 class="title">Терміновість:</h6>
-                <p class="desc">${this.priority}</p>
+                <p class="desc" data-priority="${this.priority}">${this.priority}</p>
                 <h6 class="title">Дата і час:</h6>
-                <p class="desc">${dateStr}</p>
+                <p class="desc" data-date="${this.dateTime}">${dateStr}</p>
                 <h6 class="title">Статус візиту:</h6>
-                <p class="desc">${this.status}</p>
+                <p class="desc" data-status="${this.status}">${this.status}</p>
                 <h6 class="title">Мета візиту:</h6>
-                <p class="desc">${this.goal}</p>
+                <p class="desc" data-goal="${this.goal}">${this.goal}</p>
                 <h6 class="title">Опис візиту:</h6>
-                <p class="desc">${this.description}</p>
+                <p class="desc" data-description="${this.description}">${this.description}</p>
                 <h6 class="title">Звичайний тиск:</h6>
-                <p class="desc">${this.pressure}</p>
+                <p class="desc" data-pressure="${this.pressure}">${this.pressure}</p>
                 <h6 class="title">Індекс маси тіла:</h6>
-                <p class="desc">${this.bmi}</p>
+                <p class="desc" data-bmi="${this.bmi}">${this.bmi}</p>
                 <h6 class="title">Перенесені захворювання серцево-судинної системи:</h6>
-                <p class="desc">${this.diseases}</p>
+                <p class="desc" data-diseases="${this.diseases}">${this.diseases}</p>
                 <h6 class="title">Вік:</h6>
-                <p class="desc">${this.age}</p>
+                <p class="desc" data-age="${this.age}">${this.age}</p>
             </div>
         </div>
         `;
@@ -165,23 +165,23 @@ class VisitCardTherapist {
         </div>
         <div class="card-body">
             <h6 class="title">ПІБ:</h6>
-            <p class="desc">${this.visitor}</p>
+            <p class="desc" data-visitor="${this.visitor}">${this.visitor}</p>
             <h6 class="title">Лікар:</h6>
-            <p class="desc">${this.doctor}</p>
+            <p class="desc" data-doctor="${this.doctor}">${this.doctor}</p>
             <button type="button" class="btn btn-primary seeMore">Показати більше</button>
             <div class="card-body-hide hide">
-            <h6 class="title">Терміновість:</h6>
-            <p class="desc">${this.priority}</p>
-            <h6 class="title">Дата і час:</h6>
-            <p class="desc">${dateStr}</p>
-            <h6 class="title">Статус візиту:</h6>
-            <p class="desc">${this.status}</p>
-            <h6 class="title">Мета візиту:</h6>
-            <p class="desc">${this.goal}</p>
-            <h6 class="title">Опис візиту:</h6>
-            <p class="desc">${this.description}</p>
-            <h6 class="title">Вік:</h6>
-            <p class="desc">${this.age}</p>
+                <h6 class="title">Терміновість:</h6>
+                <p class="desc" data-priority="${this.priority}">${this.priority}</p>
+                <h6 class="title">Дата і час:</h6>
+                <p class="desc" data-date="${this.dateTime}">${dateStr}</p>
+                <h6 class="title">Статус візиту:</h6>
+                <p class="desc" data-status="${this.status}">${this.status}</p>
+                <h6 class="title">Мета візиту:</h6>
+                <p class="desc" data-goal="${this.goal}">${this.goal}</p>
+                <h6 class="title">Опис візиту:</h6>
+                <p class="desc" data-description="${this.description}">${this.description}</p>
+                <h6 class="title">Вік:</h6>
+                <p class="desc" data-years="${this.age}">${this.age}</p>
             </div>
         </div>
         `;
@@ -231,16 +231,79 @@ function renderVisit(visit, doctor) {
 visits.addEventListener('click', (e) => {
     const element = e.target;
     if(element.classList.contains('seeMore')){
-        element.nextElementSibling.classList.toggle('hide');
-        if (element.textContent == "Показати більше"){
-            element.textContent = "Приховати"
-        } else {
-            element.textContent = "Показати більше"
-        }
+        seeMore(element);
     } else if (element.classList.contains('btn--delete')){
-        const cardId = element.closest("div.card").getAttribute('data-id');
-        console.log(cardId);
-        deleteCard(cardId);
-        element.closest("div.card").remove();
+        deleteCard(element);
+    } else if (element.classList.contains('btn--edit')){
+        editCard(element);
     }
 });
+
+function seeMore(element){
+    element.nextElementSibling.classList.toggle('hide');
+    if (element.textContent == "Показати більше"){
+        element.textContent = "Приховати"
+    } else {
+        element.textContent = "Показати більше"
+    }
+}
+
+function deleteCard(element){
+    const cardId = element.closest("div.card").getAttribute('data-id');
+    console.log(cardId);
+    deleteCard(cardId);
+    element.closest("div.card").remove();
+}
+
+function editCard(element){
+    formElement.classList.add('Modal');
+    overlay.style.display = 'block';
+    openModal();
+    document.querySelector('#addCardSubmitButton').style.display = 'none';
+    const editBtn = document.querySelector('#editBtn');
+    editBtn.style.display = 'block';
+
+    const card = element.closest("div.card");
+    const id = card.getAttribute('data-id');
+    const doctor = card.querySelector('[data-doctor]').dataset.doctor;
+    const visitor = card.querySelector('[data-visitor]').dataset.visitor;
+    const goal = card.querySelector('[data-goal]').dataset.goal;
+    const description = card.querySelector('[data-description]').dataset.description;
+    const priority = card.querySelector('[data-priority]').dataset.priority;
+    const status = card.querySelector('[data-status]').dataset.status;
+    const date = card.querySelector('[data-date]').dataset.date;
+
+    changeDoctor(doctor);
+    doctorSelect.value = doctor;
+
+    document.querySelector('#visitor').value = visitor;
+    document.querySelector('#goal').value = goal;
+    document.querySelector('#description').value = description;
+    document.querySelector('#priority').value = priority;
+    document.querySelector('#status').value = status;
+    document.querySelector('#dateTime').value = date;
+
+    switch (doctor) {
+        case 'Dentist':
+            const lastVisit = card.querySelector('[data-last]').dataset.last;
+            document.querySelector('#lastVisit').value = lastVisit;
+        break;
+        case 'Cardiologist':
+            console.log('Luck');
+            const pressure = card.querySelector('[data-pressure]').dataset.pressure;
+            document.querySelector('#bloodPressure').value = pressure;
+            const bmi = card.querySelector('[data-bmi]').dataset.bmi;
+            document.querySelector('#bmi').value = bmi;
+            const diseases = card.querySelector('[data-diseases]').dataset.diseases;
+            document.querySelector('#diseases').value = diseases;
+            const age = card.querySelector('[data-age]').dataset.age;
+            document.querySelector('#age').value = age;
+        break;
+        case 'Therapist':
+            const years = card.querySelector('[data-years]').dataset.years;
+            document.querySelector('#years').value = years;
+        break;
+    }
+
+    editBtn.addEventListener('click', editVisit);
+}

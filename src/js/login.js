@@ -146,6 +146,13 @@ createCardButton.classList.add('btn', 'btn-sm');
 createCardButton.id = 'addCardSubmitButton';
 createCardButton.textContent = 'Створити';
 
+// Кнопка "Записати зміни"
+const editBtn = document.createElement('button');
+editBtn.type = 'button';
+editBtn.classList.add('btn', 'btn-sm', 'btn-edit');
+editBtn.id = 'editBtn';
+editBtn.textContent = 'Записати зміни';
+
 // Кнопка "Закрити"
 const closeButton = document.createElement('button');
 closeButton.type = 'button';
@@ -180,6 +187,7 @@ function openModal() {
     formElement.appendChild(dateInput);
     formElement.appendChild(statusSelect);
     formElement.appendChild(createCardButton);
+    formElement.appendChild(editBtn);
     formElement.appendChild(closeButton);}
 
 function closeModal() {
@@ -212,6 +220,7 @@ function closeModal() {
     formElement.removeChild(urgencySelect);
     formElement.removeChild(fullNameInput);
     formElement.removeChild(createCardButton);
+    formElement.removeChild(editBtn);
     formElement.removeChild(closeButton);
     formElement.removeChild(dateInputLabel);
 }
@@ -230,9 +239,12 @@ function applyDoctorClass(selectedDoctor) {
     extraFieldsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением новых полей
 }
 
-doctorSelect.addEventListener('change', function () {
+doctorSelect.addEventListener('change', () => {
     const selectedDoctor = doctorSelect.value;
+    changeDoctor(selectedDoctor);
+});
 
+function changeDoctor (selectedDoctor){
     switch (selectedDoctor) {
         case 'Dentist':
             applyDoctorClass('VisitDentist');
@@ -250,7 +262,7 @@ doctorSelect.addEventListener('change', function () {
             applyDoctorClass('');
             extraFieldsContainer.innerHTML = ''; // Скрываем дополнительные поля при выборе "Всі візити"
     }
-});
+}
 
 // function addDentistFields() {
 //     const lastVisitInput = document.createElement('input');
