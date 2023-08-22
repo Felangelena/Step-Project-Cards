@@ -1,2 +1,0 @@
-// createcard.js
-

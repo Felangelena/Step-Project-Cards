@@ -206,20 +206,26 @@ function getVisits() {
             if (response.length == 0) {
                 visits.innerHTML = '<h2>No items have been added</h2>';
             } else {
-                response.forEach(visit => {
-                    if(visit.doctor == 'Cardiologist'){
-                    const visitCard1 = new VisitCardCardiologist(visit);
-                    visitCard1.render();
-                    } else if (visit.doctor == 'Dentist') {
-                    const visitCard2 = new VisitCardDentist(visit);
-                    visitCard2.render();
-                    } else if (visit.doctor == 'Therapist') {
-                    const visitCard3 = new VisitCardTherapist(visit);
-                    visitCard3.render();
-                    }
-                })
+                response.forEach(visit => renderVisit(visit, visit.doctor));
             }
-        })
+        });
+}
+
+function renderVisit(visit, doctor) {
+    switch (doctor) {
+        case 'Cardiologist':
+            const visitCard1 = new VisitCardCardiologist(visit);
+            visitCard1.render();
+        break;
+        case 'Dentist':
+            const visitCard2 = new VisitCardDentist(visit);
+            visitCard2.render();
+        break;
+        case 'Therapist':
+            const visitCard3 = new VisitCardTherapist(visit);
+            visitCard3.render();
+        break;
+    }
 }
 
 visits.addEventListener('click', (e) => {

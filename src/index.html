@@ -60,17 +60,17 @@
 
         <section class="filters">
           <div class="filter">
-            <h4 class="filter__title">Status</h4>
-            <select class="form-select form-select-status" aria-label="Default select example">
+            <h4 class="filter__title">Статус візиту</h4>
+            <select id="status" class="form-select form-select-status" aria-label="Default select example">
               <option value="all" selected>Всі візити</option>
-              <option value="1">Заплановані</option>
-              <option value="2">Відбулися</option>
+              <option value="planned">Заплановані</option>
+              <option value="visited">Відбулися</option>
             </select>
           </div>
 
           <div class="filter">
-            <h4 class="filter__title">Priority</h4>
-            <select class="form-select form-select-priority" aria-label="Default select example">
+            <h4 class="filter__title">Терміновість візиту</h4>
+            <select id="priority" class="form-select form-select-priority" aria-label="Default select example">
               <option value="all" selected>Всі візити</option>
               <option value="low">Звичайні</option>
               <option value="normal">Пріоритетні</option>
@@ -79,9 +79,14 @@
           </div>
 
           <div class="filter">
-            <h4 class="filter__title">Search</h4>
-            <input type="text" class="form-control" placeholder="Пошук пацієнта">
+            <h4 class="filter__title">Пацієнт</h4>
+            <input id="patient" type="text" class="form-control" placeholder="Ім'я або Прізвище">
           </div>
+
+          <div class="filter">
+            <button id='btnFilter' type="button" class="btn btn-primary seeMore">Фільтрувати</button>
+          </div>
+
         </section>
         <section class="visits">
           
