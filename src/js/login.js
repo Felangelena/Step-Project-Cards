@@ -356,16 +356,6 @@ createCardButton.addEventListener('click', function(event) {
         alert('Выберите врача');
     } else {
         // Остальной код для создания визита
-        switch (doctorSelect.value) {
-            case 'Dentist':
-                createVisitDentist(doctorSelect.value, document.querySelector("#lastVisit").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
-                break;
-            case 'Cardiologist':
-                createVisitCardiologist(doctorSelect.value, document.querySelector("#bloodPressure").value, document.querySelector("#bmi").value, document.querySelector("#diseases").value, document.querySelector("#age").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
-                break;
-            case 'Therapist':
-                createVisitTherapist(doctorSelect.value, document.querySelector("#years").value, document.querySelector("#goal").value, document.querySelector("#description").value, document.querySelector("#priority").value, document.querySelector("#visitor").value, document.querySelector("#dateTime").value, document.querySelector("#status").value);
-                break;
-        }
+        createVisit(getVisitInfo(doctorSelect.value));
     }
 });

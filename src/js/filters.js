@@ -17,6 +17,7 @@ function filterVisits() {
         })
             .then(response => response.json())
             .then(response => {
+
             // Filter by status
                 if(visitStatus == 'all') {
                     filterStatus = response;

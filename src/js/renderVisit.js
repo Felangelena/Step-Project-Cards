@@ -1,16 +1,17 @@
 function renderVisit(visit, doctor) {
+    let visitCard;
+
     switch (doctor) {
         case 'Cardiologist':
-            const visitCard1 = new VisitToCardiologist(visit);
-            visitCard1.render();
+            visitCard = new VisitToCardiologist(visit);
         break;
         case 'Dentist':
-            const visitCard2 = new VisitToDentist(visit);
-            visitCard2.render();
+            visitCard = new VisitToDentist(visit);
         break;
         case 'Therapist':
-            const visitCard3 = new VisitToTherapist(visit);
-            visitCard3.render();
+            visitCard = new VisitToTherapist(visit);
         break;
     }
+
+    visitCard.render();
 }

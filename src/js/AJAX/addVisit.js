@@ -1,85 +1,29 @@
 // Add visit
 
-function createVisitCardiologist (doctor, pressure, bmi, diseases, age, goal, description, priority, visitor, dateTime, status) {
+function createVisit(data) {
   fetch("https://ajax.test-danit.com/api/v2/cards", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
   },
-  body: JSON.stringify({
-    doctor: doctor,
-    pressure: pressure,
-    bmi: bmi,
-    diseases: diseases,
-    age: age,
-    goal: goal,
-    description: description,
-    priority: priority,
-    visitor: visitor,
-    dateTime: dateTime,
-    status: status
-  })
+  body: JSON.stringify(data)
 })
   .then(response => response.json())
   .then(response => {
     console.log(response);
-    const visitCard1 = new VisitToCardiologist(response);
-    visitCard1.render();
-  }
-  );
-}
-
-function createVisitDentist (doctor, lastVisit, goal, description, priority, visitor, dateTime, status) {
-  fetch("https://ajax.test-danit.com/api/v2/cards", {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  },
-  body: JSON.stringify({
-    doctor: doctor,
-    lastVisit: lastVisit,
-    goal: goal,
-    description: description,
-    priority: priority,
-    visitor: visitor,
-    dateTime: dateTime,
-    status: status
-  })
-})
-  .then(response => response.json())
-  .then(response => {
-    console.log(response);
-    const visitCard1 = new VisitToDentist(response);
-    visitCard1.render();
-  }
-  );
-}
-
-function createVisitTherapist (doctor, age, goal, description, priority, visitor, dateTime, status) {
-  fetch("https://ajax.test-danit.com/api/v2/cards", {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  },
-  body: JSON.stringify({
-    doctor: doctor,
-    age: age,
-    goal: goal,
-    description: description,
-    priority: priority,
-    visitor: visitor,
-    dateTime: dateTime,
-    status: status
-  })
-})
-  .then(response => response.json())
-  .then(response => {
-    console.log(response);
-    const visitCard1 = new VisitToTherapist(response);
-    visitCard1.render();
-  }
-  );
+    let visitCard;
+    switch (response.doctor) {
+      case 'Cardiologist':
+          visitCard = new VisitToCardiologist(response);
+      break;
+      case 'Dentist':
+          visitCard = new VisitToDentist(response);
+      break;
+      case 'Therapist':
+          visitCard = new VisitToTherapist(response);
+      break;
+    }
+    visitCard.render();
+  });
 }
