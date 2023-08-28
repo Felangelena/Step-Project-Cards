@@ -1,3 +1,3 @@
 window.onload = (event) => {
-    getVisits();
-  };
+  getVisits();
+};

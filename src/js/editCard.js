@@ -1,16 +1,101 @@
-// Edit card
+function editCard(element){
+    formElement.classList.add('Modal');
+    overlay.style.display = 'block';
+    openModal();
+    document.querySelector('#addCardSubmitButton').style.display = 'none';
+    const editBtn = document.querySelector('#editBtn');
+    editBtn.style.display = 'block';
 
-function editVisit(body, id) {
-    fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(body)
-    })
-        .then(()=> {
-            closeModal();
-            getVisits();
-        })
+    const card = element.closest("div.card");
+    let id = card.getAttribute('data-id');
+    const doctor = card.querySelector('[data-doctor]').dataset.doctor;
+    const visitor = card.querySelector('[data-visitor]').dataset.visitor;
+    const goal = card.querySelector('[data-goal]').dataset.goal;
+    const description = card.querySelector('[data-description]').dataset.description;
+    const priority = card.querySelector('[data-priority]').dataset.priority;
+    const status = card.querySelector('[data-status]').dataset.status;
+    const date = card.querySelector('[data-date]').dataset.date;
+
+    changeDoctor(doctor);
+    doctorSelect.value = doctor;
+
+    document.querySelector('#visitor').value = visitor;
+    document.querySelector('#goal').value = goal;
+    document.querySelector('#description').value = description;
+    document.querySelector('#priority').value = priority;
+    document.querySelector('#status').value = status;
+    document.querySelector('#dateTime').value = date;
+
+    switch (doctor) {
+        case 'Dentist':
+            const lastVisit = card.querySelector('[data-last]').dataset.last;
+            document.querySelector('#lastVisit').value = lastVisit;
+        break;
+        case 'Cardiologist':
+            console.log('Luck');
+            const pressure = card.querySelector('[data-pressure]').dataset.pressure;
+            document.querySelector('#bloodPressure').value = pressure;
+            const bmi = card.querySelector('[data-bmi]').dataset.bmi;
+            document.querySelector('#bmi').value = bmi;
+            const diseases = card.querySelector('[data-diseases]').dataset.diseases;
+            document.querySelector('#diseases').value = diseases;
+            const age = card.querySelector('[data-age]').dataset.age;
+            document.querySelector('#age').value = age;
+        break;
+        case 'Therapist':
+            const years = card.querySelector('[data-years]').dataset.years;
+            document.querySelector('#years').value = years;
+        break;
+    }
+
+    editBtn.addEventListener('click', () => {
+        let visitInfo;
+
+        switch (doctor) {
+            case 'Dentist':
+                visitInfo = {
+                    id: id,
+                    visitor: document.querySelector('#visitor').value,
+                    doctor: doctorSelect.value,
+                    priority: document.querySelector('#priority').value,
+                    dateTime: document.querySelector('#dateTime').value,
+                    status: document.querySelector('#status').value,
+                    goal: document.querySelector('#goal').value,
+                    description: document.querySelector('#description').value,
+                    lastVisit: document.querySelector('#lastVisit').value
+                };
+            break;
+            case 'Cardiologist':
+                visitInfo = {
+                    id: id,
+                    visitor: document.querySelector('#visitor').value,
+                    doctor: doctorSelect.value,
+                    priority: document.querySelector('#priority').value,
+                    dateTime: document.querySelector('#dateTime').value,
+                    status: document.querySelector('#status').value,
+                    goal: document.querySelector('#goal').value,
+                    description: document.querySelector('#description').value,
+                    pressure: document.querySelector('#bloodPressure').value,
+                    bmi: document.querySelector('#bmi').value,
+                    diseases: document.querySelector('#diseases').value,
+                    age: document.querySelector('#age').value
+                }
+            break;
+            case 'Therapist':
+                visitInfo = {
+                    id: id,
+                    visitor: document.querySelector('#visitor').value,
+                    doctor: doctorSelect.value,
+                    priority: document.querySelector('#priority').value,
+                    dateTime: document.querySelector('#dateTime').value,
+                    status: document.querySelector('#status').value,
+                    goal: document.querySelector('#goal').value,
+                    description: document.querySelector('#description').value,
+                    age: document.querySelector('#years').value
+                };
+            break;
+        }
+
+        editVisit(visitInfo, id);
+    });
 }

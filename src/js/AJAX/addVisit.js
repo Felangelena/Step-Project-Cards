@@ -1,4 +1,4 @@
-// Add card
+// Add visit
 
 function createVisitCardiologist (doctor, pressure, bmi, diseases, age, goal, description, priority, visitor, dateTime, status) {
   fetch("https://ajax.test-danit.com/api/v2/cards", {
@@ -24,7 +24,7 @@ function createVisitCardiologist (doctor, pressure, bmi, diseases, age, goal, de
   .then(response => response.json())
   .then(response => {
     console.log(response);
-    const visitCard1 = new VisitCardCardiologist(response);
+    const visitCard1 = new VisitToCardiologist(response);
     visitCard1.render();
   }
   );
@@ -51,7 +51,7 @@ function createVisitDentist (doctor, lastVisit, goal, description, priority, vis
   .then(response => response.json())
   .then(response => {
     console.log(response);
-    const visitCard1 = new VisitCardDentist(response);
+    const visitCard1 = new VisitToDentist(response);
     visitCard1.render();
   }
   );
@@ -78,7 +78,7 @@ function createVisitTherapist (doctor, age, goal, description, priority, visitor
   .then(response => response.json())
   .then(response => {
     console.log(response);
-    const visitCard1 = new VisitCardTherapist(response);
+    const visitCard1 = new VisitToTherapist(response);
     visitCard1.render();
   }
   );
