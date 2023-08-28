@@ -162,7 +162,6 @@ closeButton.textContent = 'Закрити';
 
 createButton.addEventListener('click', function(event) {
     event.preventDefault();
-
     openModal();
 });
 
@@ -191,10 +190,12 @@ function openModal() {
     formElement.appendChild(closeButton);}
 
 function closeModal() {
-    formElement.reset()
+    formElement.reset();
     formElement.classList.remove('Modal');
     overlay.style.display = 'none';
     formElement.style.display = 'none';
+    document.querySelector('#editBtn').style.display = 'none';
+    document.querySelector('#addCardSubmitButton').style.display = 'block';
 
     // Сбрасываем значения всех полей в начальное состояние
     dateInput.value = '';
@@ -356,6 +357,7 @@ createCardButton.addEventListener('click', function(event) {
         alert('Выберите врача');
     } else {
         // Остальной код для создания визита
+
         createVisit(getVisitInfo(doctorSelect.value));
     }
 });
